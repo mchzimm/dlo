@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLO Goal Report ELI5</title>
+<style>
+  :root { color-scheme:dark; --bg:#16151a; --ink:#f0ece4; --mute:#c4bfb4; --card:#24222a; --line:#45424d; --ok:#4cc274; --bad:#ff8a80; --wip:#f0b429; --pill-ink:#141318; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#16151a; background:var(--bg); color:var(--ink); font:18px/1.45 system-ui, sans-serif; }
+  main { max-width:880px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:2rem; margin:0 0 4px; }
+  .sub { color:var(--mute); margin-bottom:24px; }
+  .stamp { color:var(--ink); font-weight:600; font-size:.95rem; margin:2px 0 8px; }
+  h3.era { margin:32px 0 4px; font-size:1.2rem; color:var(--mute); }
+  .card { background:var(--card); border:2px solid var(--line); border-radius:18px; padding:16px 18px; margin:16px 0; display:grid; grid-template-columns:72px 1fr; gap:14px; align-items:start; }
+  .pic { font-size:56px; line-height:1; text-align:center; }
+  .card h2 { margin:0 0 4px; font-size:1.25rem; }
+  .card p { margin:4px 0; }
+  .badge { display:inline-block; padding:2px 12px; border-radius:999px; color:var(--pill-ink); font-weight:700; font-size:.85rem; }
+  .ok, .done { background:var(--ok); } .bad { background:var(--bad); } .wip { background:var(--wip); }
+  .bar { height:22px; background:var(--line); border-radius:11px; position:relative; margin:8px 0 2px; overflow:hidden; }
+  .bar i { position:absolute; inset:0 auto 0 0; background:var(--bad); }
+  .bar b { position:absolute; top:0; bottom:0; width:3px; background:var(--ink); }
+  .scale { display:flex; justify-content:space-between; font-size:.8rem; color:var(--mute); }
+  .need { border-color:var(--wip); }
+  footer { margin-top:28px; color:var(--mute); font-size:.9rem; }
+  @media (max-width:520px) { .card { grid-template-columns:48px 1fr; } .pic { font-size:40px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>🧍 Little People Report</h1>
+  <div class="stamp" id="upd">Updated 2026-11-23 06:53 PST · 2026-11-23 14:53 UTC</div>
+  <div class="sub">Where we are, in plain words. Top part: today. Lower part: the older report from 2026-11-06, pills set to today's board. Per-scenario detail: <a href="DLO-survival-eli5.html" style="color:var(--ink)">DLO-survival-eli5.html</a>.</div>
+  <div class="card">
+    <div class="pic">🌍</div>
+    <div>
+      <h2>The live game now <span class="badge wip">running, watching humans</span></h2>
+      <p>Humans were dying out: 151 down to 56, because animal babies used up the shared birth slots (KB-1012).</p>
+      <p>Fix: humans now get their own birth turn (no new code, a switch). Game restarted 2026-11-23 06:37 PST with 51 humans, 0 errors.</p>
+      <p>Check due after about 4,500 more steps: more humans born than died, and not fewer humans than 51.</p>
+    </div>
+  </div>
+  <div class="card need">
+    <div class="pic">🎒🔥</div>
+    <div>
+      <h2>Full bag, no torch <span class="badge wip">fix built, test pending</span></h2>
+      <p>People with a full bag and no torch never make room, so they never light up (KB-1000). Two smoke tests failed.</p>
+      <p>Version 7 is built: drop things once, keep the torch parts, make the torch first. Its short side-by-side test has not run yet.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">✅</div>
+    <div>
+      <h2>Latest finished <span class="badge ok">merged</span></h2>
+      <p>People stuck in small pits no longer die of thirst next to water (KB-998, all gates passed).</p>
+      <p>One thing per map cell (KB-982); people can take a building apart and get some stuff back (KB-984); wells only when needed (KB-966).</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">📋</div>
+    <div>
+      <h2>The job board <span class="badge ok">642 done</span></h2>
+      <p>Done 642 · being worked on 27 · stuck 22 · waiting 252.</p>
+      <div class="bar"><i style="width:68.3%;background:var(--ok)"></i></div>
+      <div class="scale"><span>0</span><span>68% of 943 jobs done</span><span>943</span></div>
+    </div>
+  </div>
+  <h3 class="era">Older report (2026-11-06)</h3>
+  <div class="card">
+    <div class="pic">🔥🧊💧</div>
+    <div>
+      <h2>Staying alive: thirst, hunger, heat, cold <span class="badge ok">most cards closed</span></h2>
+      <p>Test: drop a few people (1, 5, 10 or 20) in a bad spot alone. They should fix the problem in 15 minutes of game time, 60 at most.</p>
+      <p><b>Now fine (nobody died in any test):</b> thirst in the desert with 10 people (13 min, was 16), heat (13-14 min with 10 people, was 19-20), cold with 10 people (15 min, was 21-22), cold with 1 person (5 min), hunger.</p>
+      <p><b>Still slow:</b> thirst in the desert with 5 / 10 / 20 people (18 / 21 min now with 5 / 20 people, KB-543 made the new way normal and the live game runs it since 2026-11-06 04:59 PST), with 20 people with a still 23 min, cold with 20 people (25 min), preparing food for 20 people (21 min), sleeping-site with 10 people (16 min).</p>
+      <p><b>What we learned (2026-11-06):</b> cold people now pick grass in bigger armfuls so the cloak is ready sooner (merged, works). Three tries to speed up the food line for 20 people did nothing: nobody waits in a queue, the last three simply walk far to a ripe plant. Two tries to help crowded wells did nothing or made it worse, so they were not kept.</p>
+      <p><b>Then (KB-542, 2026-11-06 04:36 PST):</b> the new water-and-well way (switch set KB533+538+541, still off by default) passed every one of the 24 test camps on both save copies: nobody died, no camp slower than before. Desert thirst: 5 people 18 min (was 19), 10 people 13 min (was 16, under the 15 aim), 20 people 21 min (was 30), 20 people with a still 23 min (was 27). The normal game is unchanged for now. Next: KB-543 makes the new way the normal way and restarts the live game.</p>
+      <p>Desert thirst with 20 people: the last seaside person only drinks at the one well he picked, though 17 other wells stand nearby (KB-490: 3 tries, a safe one gains 2 minutes but misses the goal, not merged). Next: KB-499 drinking pace, KB-500 spread people over food plants, KB-505 stay by the fire until warm. Done: KB-498 campfire test (lit at every size; 1 and 5 people pass, 10 and 20 fail because some stand just outside the warm circle), KB-504 stockpiles now go dark at night like the ground and light up only near a fire. Also done: KB-501 stopwatch counts game minutes (a busy computer cannot change the score), KB-499 thirsty desert crowd of 20 now clears in 30 min instead of 35 (people drink at the nearest well, and desert-edge people walk to the crowd), KB-502 tired people make a grass bed (sleep 1.5x better) but a crowd of 20 runs short of grass (KB-507). Done: KB-506 fresh scores for every test (23 races, all repeats identical). Tried twice: KB-503 and KB-508 one big stockpile; every way cost desert x20 minutes (+7) or lives, piles never got to 1, not merged. Next idea KB-509: one boss-chosen main pile per camp. Done: KB-489 quiet-box speed check passed (helpers fast enough in a quiet room). Note: the live world runs slow (about 2 ticks a minute) while other programs keep the computer at load 70; our binaries are fresh. Done: KB-505 campfire at 10 and 20 people now passes (21 and 25 min; people near a fire stay by it). KB-507 shared bed done: tired people share beds, so 20 people sleeping now clears in 22 min (was a fail); 10 take 16, 5 take 13. KB-510 found that with shelter on, nobody builds a campfire (they make cloaks first); KB-512 fixed one person who hopped between two tree spots for an hour, so 20 cold people now all warm up by minute 17 (was 1 stuck). KB-513 found why the game clock crawled: every tick the server recomputed facts for 105,000 dead creatures, 45 s per tick. It now skips them (same results, same seed): test runs went from 1.4 to 36 ticks per minute. KB-511 done: four people in a packed crowd could not find a free spot for their bed and never slept; now they build it under their own feet, so 20 people sleeping clear in 12 min (was 22) and the sleep-kit test passes in 2 min (was a fail). KB-515 done (groundwork only): better fires and clay stoves are now in the rules (small and large fire pit, small and large stone stove, clay blocks, clay cups and pots), but nobody uses them yet; KB-516 will teach people to build and use them. KB-516 done: people can now see and warm up at the new fire pits and stoves, digging gives dirt and clay, a build-upgrade action exists, and clay cups and pots can be crafted. All of it is switched off by default (every test cell equals the old score), turn on with two switches after a longer test. KB-517 done: a small fire pit warms a circle twice as wide as a campfire, a large pit four times (stoves 3 and 6 times); the warm per-spot stays the same. Still switched off in the live game until KB-518 tests it. KB-509 tried (failed, not switched on): we counted why every camp opens 30+ stockpiles (a whole crowd drops stuff the same tick, and each person thinks the spot next to a neighbor's pile is taken). Landing beside a pile cut piles from 32 to 12, but made a one-person campfire test take 43 min instead of 12, so it ships switched off. Next: KB-520 let people add to a busy pile. KB-520 tried (failed, switched off): letting a new drop land on a neighbor's pile cut piles (32 to 12 in the starved camp) but made the thirsty 20-person camp 5 minutes slower (30 to 35), likely because stuff under a standing person cannot be grabbed. KB-518 done: big fires now use their own heat reach (new fires still off until a carry-the-kit fix, KB-523). KB-500 tried (failed, switched off): sending the 20 food preparers to different plants helped one run by 2 minutes but not enough (19 vs goal 17); the real cause is a start-line traffic jam in the test, not shared plants (KB-525). KB-523 tried (failed, switched off): big-fire upgrades now work, but they ate the camp's shared stockpile and one test camp went from 25 to 62 minutes; with a safety reserve no upgrade ever fires. Next: KB-526 gather the upgrade stuff separately. KB-524 found why (diagnosis only): the thirsty camp's +5 minutes is luck of the draw, not stuff stuck under people (nobody takes from piles in the first 30 minutes; other seeds were 1 minute faster or slower), so that lever stays off. KB-522 done (switched off by default): cooks can now make stew in pots on a campfire, pit or stove and grill small animals; stoves need a pot and never grill. Test person cooked a meal in 2 minutes on all three. KB-526 failed (switched off): helpers got too busy to carry the big-fire kit. KB-529 tried three ways to speed up the thirsty camp (3 tries, none beat doing nothing; found the real limit is a crowd of 6-14 thirsty people sharing a few pond-edge spots). KB-530 (pond edge) got the thirsty camp 2-3 minutes faster (28 vs 30-31) but slowed two other camps (one 17 to 24), so it stays off. KB-531 split it in three parts: the step-back part is what slows the 5-person camp (17 to 24), the other two parts each lose a person in the thirsty desert camp, so all stay off. KB-532 checked the two stuck-at-the-pond loops in the normal game: they do not happen there, so nothing was added. KB-533 found why the last thirsty people are slow in the 20-person desert and temperate camps: they start beside the sea, where wells are banned. A smaller ban zone (switch off) cuts 30 to 24 and 27 to 21 minutes but slows the 5-person desert camp, so it stays off. KB-535 made people pick still-or-well once: the 5-person desert camp is back to 18 minutes and the 20-person camps keep their gains (24 and 21), but the 10-person desert camp gets slower (16 to 26), so it stays off. KB-536 sent people to a neighbor's nearby well: the 10-person desert camp improves from 26 to 21 minutes (normal 16, goal 18), still off. KB-537 tried stepping back to the nearest legal square: the 5-person desert camp gets 18, but one person in the 10-person camp built a still, never drank from it and died of thirst (switch off, normal game unchanged). Honest ceiling so far: best off-by-default chain is about 24 minutes in the 20-person desert camp and 21 in the temperate one, still above the 15-minute aim, and nothing has changed by default. Coming: KB-538 result (mixed, opt-in switch only): the person did not drink beside their own still because an old lock (KB-485) never lets go after a still is built, not because of the drink path. A new opt-in switch lifts the lock: 10 people no longer die of thirst, but they clear at 25 minutes (aim 18) while 5 people reach 18 and 20 people 24. The normal game is unchanged (8 of 8 cells match). Nine cards (KB-530 to KB-538) and zero default changes so far. KB-539 (no change, a check): the hot person hopping between a tree and shade is real but happens after the camp is already fine; the slow part is another person's first 12 minutes, when drink tries do nothing. The normal game was re-checked with KB-538 merged: 8 of 8 cells still match. Ten cards (KB-530 to KB-539), zero default changes, 20-person camps unchanged. KB-540 (traced, no fix): no drink was refused. A neighbor who steps aside to a safe spot (the KB-537 rule) takes the cell where another person was about to put a well, so that well is built one step to the side (same floor), and a person who was about to use it is left with a far one on another floor. Earlier I called the 5-versus-10-person trade unavoidable; that was wrong, it is this one ordering effect. Eleven cards (KB-530 to KB-540), zero default changes, 20-person camps unchanged (30, 27, 25, 21, 25 min; aim 15). KB-541 (opt-in switch, first chain better than normal everywhere it was measured): build spots now ignore cells a neighbor only just stepped onto. 10 people 13 min (normal 16, now under the 15-minute aim), 5 people 18 (19), 20 people in the desert 21 (30), 20 in the temperate zone 23 (27), no deaths. Only one of the two test copies was run so far. Twelve cards, zero default changes still. Next, KB-542: check all 24 test camps on both copies before making it normal. Also coming: KB-527 quiet-time recheck and pictures for the new pots.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">🛖🍎🌳</div>
+    <div>
+      <h2>Latest fixes: cold, food and looks <span class="badge ok">merged</span></h2>
+      <p><b>Plants kept (KB-586):</b> people now leave the plant standing when they pick fruit, so food grows back. Preparing food for 20 people: 21 min down to 19.</p>
+      <p><b>Rock shelter before a cold night (KB-584, with KB-581):</b> a person who will sleep in the cold now builds a rock shelter first. Cold with 20 people: 25 min down to 23. There is an off switch (DLO_NO_KB584) to compare.</p>
+      <p><b>Hungry people eat before they court (KB-587):</b> a hungry person now cuts fruit, walks to it and prepares food first, and nobody courts a hungry person who is about to pick fruit. Food for 20 people: 19 min down to 14, the first goal cell under the 15-minute aim. The case with the plant kept stays at 18, unchanged.</p>
+      <p><b>What you see (KB-589, KB-590):</b> hovering a plant now shows its real name. Fruit is drawn small on the plant it hangs from, and each kind of fruit has its own size.</p>
+      <p><b>Thirsty crowd queues less (KB-579):</b> in the dry-temperate-land test with 20 people (dt20, no water anywhere near, green land: a thirsty human must make a well), thirsty people used to pace around the water or give up on a nearby well that was one step higher, then dig their own. Now they drink from the well next to them. Clear time: 22 min down to 12, the second group under the 15-minute aim. The 5-person version (dt5) went from 15 to 13. There is an off switch (DLO_NO_KB579) to compare.</p>
+      <p><b>Hungry people dig food first (KB-576):</b> in hungry-in-dry-sandy-land with 20 people (starved-desert, st20) a cold, hungry human with no food now digs tubers before building a shelter. st20 19 to 16 minutes on the frozen run and 14 on the keep run (keep run meets the 15-minute aim); st10 16 to 14 on both. Nobody died; the crowd is exposed a bit longer (peak 224 to 288 of a 2600 limit). Switch DLO_NO_KB576.</p>
+      <p><b>Cold newborn stops dithering (KB-578):</b> in campfire-by-water with 20 people (cw20) one cold newborn kept stepping between two fire spots before walking to the water. It now keeps its spot unless the new one is clearly nearer. Its last exit came at minute 14 instead of 32; the crowd clear time stayed at 11 and nobody died. Switch DLO_NO_KB578.</p>
+      <p><b>Still above 15 min:</b> freezing night x20 (freezing-live-1, fz20) 22 (limit of the place at this seed: KB-558, KB-602), dry sandy land thirst x20 (dehydrated-desert, de20) 20 (limit of one shared well at this seed: KB-575), dry sandy land thirst x5 (de5) 18, dried-food prep x20 keep run (preserve-prep, pp20) 19, find a sleeping spot x10 (sleep-site, ss10) 16. KB-591: a mating partner keeps its own action; alone it made dried-food prep x20 slower, 14 to 21 minutes, because crowds block each other, which KB-592 fixed. KB-585 merged: people on the walk to a warm tree wait instead of stepping back and forth; freezing night x20 went from 23 to 22 minutes, a small gain. KB-592 merged, KB-591 now on by default with it: people on a crowded food walk wait instead of stepping back and forth; dried-food prep x20 frozen 14 to 13, keep 18 to 19. KB-575 closed: no lever moves dry sandy land x20; one shared well cannot serve 20 people in time. KB-599 counted the running game: all 18 recorded human deaths since the last restart were old age, none from thirst, hunger, heat or cold (a person lives about 3 weeks of game time, KB-600). Animals die a lot: starvation 946, cold 682 (KB-138). KB-558 closed: 20 freezing people queue single-file through a 2-cell gap to one tree, so even perfect turn-taking gives about 19-20 minutes. KB-602 closed: the stuck person really has no way out, water on two sides and other people on the other two. These two x20 cells cannot reach 15 by changing how people behave at this seed, only by changing the place itself, so the aim stays and they stay listed as limits. Hungry in dry sandy land x20 is now 14 on both runs. KB-604 closed: people sleeping next to the tree cost others only 1 tick, so there is nothing to win there. KB-600 closed: all 18 human deaths since the restart were old age, because people live about 3 weeks of game time. That pace was chosen long ago to keep a whole life watchable, nobody re-decided it when the calendar changed, and it stays for now. Next: KB-549, dry sandy land thirst x5, why sleep site x10 takes 16, and why dropped-in animals die so fast. KB-138 counted animals over 1511 ticks of the live game, one sample: 2158 deaths, 98.6% of them animals the game dropped in, not animals born to parents. Of those dropped in during that time, 87% of the ones that died were dead within 200 ticks. All 200 whales and 179 of 180 fish counted died that fast, and so did most ox, zebra, horses, pandas and rabbits. Causes: starving 1245, cold 588, thirst 188, killed 93, old age 37, heat 7. All 31 animals born to parents that died, died of old age. KB-607 looked at sea animals: all 240 whales and all 190 fish starved, because the sea has no plants yet (planned, not built), so they can only nibble ripe plants on the shore. One plant feeds one animal every 30 ticks, ten are dropped together, and they starve in 40 to 50 ticks. Tropical fish and pufferfish also freeze: the drop looks at the kind of water, not its temperature, so only 10 of 190 and 0 of 130 land where they are comfortable. The game picks that spot, not the animal, so this part is not the animal failing to survive. So the cause is what the world holds and how the game drops them, not the animal. Not fixed yet: KB-607 (where and how many to drop) and KB-609 (sea plants) are planned. KB-608 looked at land animals: at noon, food is near every drop. But 9 of 10 dropped in the dark die within 200 ticks, against about 1 in 4 dropped in daylight (only 130 daylight land drops, and only 10 each for ox and rabbit). Three quarters of the drops happen at night, and now we know why: every drop we looked at came from the rescue rule (fewer than 2 of an animal alive means 10 more, as often as every 5 ticks). Night drops mostly die within about 45 ticks, so that animal is rescued again, all night; daylight drops mostly live, so it calms down by day. Why night drops die is still open. The food near a drop runs down through the night. By day and at dusk there are about 46 to 48 ripe plants in reach. By mid-night it is 16 to 20, and 6 of the last 20 drops had 0 to 2. Plants do not grow in the dark, so nothing comes back until dawn. So later in the night hunger is a real cause. Early-night drops die too, and that is not explained yet. A count of every death over two game days (4065 deaths) shows two separate problems. First, animals just dropped in die at any hour, mostly of hunger and cold: 861 of the 1131 cold deaths were animals less than 50 minutes old, so we now drop each animal only where the weather suits it. Second, dropped animals that already lived over 200 minutes still go hungry at night, about 6 times more than by day. Be careful with these numbers: the oldest group is one batch of 73 animals; humans born in the game barely starve, but they keep food stores, so they are no fair comparison; and the game dropped some actions in that window. We are now recording what these animals do tick by tick. KB-549 is done: 5 humans in the desert now clear one minute sooner, 18 to 17, still above the 15-minute aim, and 5 humans in the temperate scenario got one minute slower, 13 to 14, as a side effect, still inside the aim. No giraffe of 70 and only 91 of 160 horses land at a comfortable temperature. The game also keeps choosing the animals that die fastest, because few of them are alive (KB-610). The higher early-death share is not a regression: land animals are inside the old band, sea animals are counted now and push it up.</p>
+      <p><b>Behind the scenes:</b> KB-588 fixed the scoreboard reader so it recovers a log line that got split in two (no game change). KB-593 put the ELI5 plan page on the web at https://mchzimm.github.io/dlo/, refreshed twice an hour when it changed. Two follow-ups are filed: KB-594 (two small crowd tests have stale scores) and KB-595 (the test robot writes into other cards' notes).</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">🍖💧</div>
+    <div>
+      <h2>Eating and drinking <span class="badge wip">mostly works</span></h2>
+      <p>On a copy of the real game, 123 of 123 finished eating and drinking sessions ended full enough (a small sample of the map, about 1 in 4 people watched).</p>      <p>Not proven for everyone at once. About 1 in 10 watched people left no notes at all, so we cannot say about them (card KB-368). A start where all 70 people are starving at the same moment still fails.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">👨‍👩‍👧‍👦</div>
+    <div>
+      <h2>More people, in little groups <span class="badge ok">works</span></h2>
+      <p>Back then the map had about 780 people in small groups. Before, you saw 3. The real game was restarted to get them.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">🔥🌙</div>
+    <div>
+      <h2>Torch glow at night <span class="badge wip">works, depends on the ground</span></h2>
+      <p>Awake people with a lit torch at midnight: 99 of 100 (latest test).</p>
+      <p>Four careful tests gave a middle result of 10.6, 7.1, 3.0 and 9.0 times (the first two on in-progress builds, the last two on the built program) brighter than no torch (we asked for 5). The 3.0 test failed our rule and that failure stays on record. It happened because most carriers stood on bright sand or water, which is already bright without a torch. So we wrote a new rule before the last test: new random draw, only carriers away from sand, water and snow, same 5 times line. Result: 9.0 times brighter (all 7 above 5). The same draw without the ground filter gave 9.5 times, but 2 carriers on bright ground read only 1.6 and 2.3 times. The distance bar read 21 to 28 meters, not always 23, and it was checked from text dumps, not a live window.</p>
+      <p>The numbers come from the test agents' tables. I re-did the middle of each list myself, not the pictures.</p>
+    </div>
+  </div>
+
+  <div class="card need">
+    <div class="pic">⏱️🔨</div>
+    <div>
+      <h2>Make a torch in 15 minutes <span class="badge wip">close, not proven</span></h2>
+      <p>The goal is 98 of every 100 people. Fix KB-373 plus fix KB-376 (people with a torch step away from the trees without leaving their home ground) gave 98.29 average over 7 starts, versus 97.90 without the second fix. That is a thin win: it only just meets the rule that 5 of 7 starts must not get worse (5 of 7 did).</p>
+      <p>On the game as it runs now, two later starts gave 98.4 and 96.1 (average 97.25). Two starts cannot settle it, and the 7-start test was not repeated on the newest game.</p>
+      <div class="bar" title="97.25 of 100 on 2 starts, newest game"><i style="width:97.25%"></i><b style="left:98%"></b></div>
+      <div class="scale"><span>0</span><span>97.25 (2 starts)</span><span>98 goal</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">🏃</div>
+    <div>
+      <h2>Running <span class="badge wip">speed ok, one check failed</span></h2>
+      <p>People run and get hungrier and thirstier while running. Fix KB-378 makes runners move first each tick so a walker cannot block their path. On a copy of the real game, runners moved 2.15 times as fast as walkers (goal: 2 to 5). That is from the second start tried (49 hungry/thirsty); the plan said 44, and the 44 run had too few runners to judge, so treat it as thin. Walkers' hunger and thirst stay near 4 and 5.3 points per hour. One check still fails: 6.6 of 100 runs got cut to one step, the goal is under 5. Card KB-381 looks into those. A smaller test with fewer runners also looked too thin to judge.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">📦</div>
+    <div>
+      <h2>Stockpiles and packing <span class="badge wip">built, live</span></h2>
+      <p>People drop items in a 📦 pile and take them later. Not measured at scale yet.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">⚖️</div>
+    <div>
+      <h2>Fair test <span class="badge ok">fixed</span></h2>
+      <p>The scorekeeper counts people fairly now. A test only counts if every missed message was a known skipped one. All three tests above passed that check.</p>
+    </div>
+  </div>
+  <div class="card need" id="sprint">
+    <div class="pic">⏱️</div>
+    <div>
+      <h2>Torch sprint, one person, three worlds <span class="badge ok">passed</span></h2>
+      <p>New test (KB-385) replaces the 100-person noon test. One person with full food and water starts in an empty world at about 6 pm, far from trees, on big land. Goal: make a torch in 15 game minutes (about 15 seconds of real time, 60 seconds at most). Worlds: seed 6, then 11, then 23, all with the same final code.</p>
+      <p><b>One person, three worlds: all passed.</b> Seed 6: 11 game minutes (11.6 s real). Seed 11: 12 (12.6 s). Seed 23: 13 (13.6 s). Same final code each time.</p>
+      <p><b>What failed on the way:</b> first run 34 minutes, then 24, then 17. A bug in our own test secretly started 85 people instead of 1, so the first numbers were thrown out. Lesson: a test must check how many people it started.</p>
+      <p><b>Lessons learned:</b> (1) after dusk people only walked, they never ran; (2) running costs energy, and the "rest" step kept interrupting the run every other step.</p>
+      <p><b>Fixes applied:</b> keep running after dusk when the torch deadline is missed; a torchless person in the dark rests only when energy is much lower.</p>
+      <p><b>Group of 5 (first look, before give-way):</b> all 5 made a torch, slowest 16 minutes (line is 15), and finished people stood on tree cells for 8 person-ticks. Nobody shared items.</p>
+      <p><b>Group of 5 on the new code (KB-388) FAILED on all 3 worlds.</b> Slowest person: seed 6 = 16 minutes, seed 11 = 16, seed 23 = 17 (line is 15). People still standing on tree cells while others search: 5, 9, 6 person-ticks (line is 0). No item sharing at all.</p>
+      <p><b>Second try (seed 6) still FAILED:</b> finished people now run out of the tree area (leave delay 1 tick, blocked ticks 8 to 5 to 3), but the slowest person is still at 16 minutes (line 15). <b>Lesson:</b> getting out of the way does not make the last two people faster; they are slow because they start far from the tree and queue. <b>Next fix:</b> queued people pick the nearest free tree cell; the old blocked count is kept as a FAIL and a corrected count (without the craft tick) is declared before re-running.</p>
+      <p><b>Rule change from you:</b> 15 minutes is now a <i>target</i> we report on, and 60 minutes is the hard limit a person must finish inside. The earlier failures against 15 stay on record; the new limit starts with the next run, written down before it.</p>
+      <p><b>Group of 5 under the new limit (60 minutes):</b> seed 6 and seed 23 pass; seed 11 FAILS by one tick (one person stood one tick on a tree cell after finishing). Everyone made a torch inside 60 minutes; 15-minute target met by 3 of 5, 4 of 5 and 2 of 5 people. <b>Lessons learned:</b> running out of the tree area works (leave delay 1 tick); the last case happens when the only way out is across a border or onto another tree cell. <b>Next fix:</b> take the shortest free path out, then restart the 5-person test from seed 6. Still no sharing: people finish with empty bags, so spare items need a real source (separate card). Groups of 10 and 20 need a grove (several trees) added to the test first.</p>
+      <p><b>Fourth try: seed 11 still FAILS by one tick, and nothing has passed yet on one final build.</b> Seeds 6 and 23 met the lines only in an earlier run; the 5-person test restarts from seed 6 on the final fix. <b>Lessons learned:</b> a tree-side cell can have only tree-side neighbors, so one step cannot get out; forcing a new direction every tick broke two older tests, so it was undone. <b>Proposed fix:</b> pick the shortest run along the person's own direction that ends off the tree area; if none exists, choose the direction away from the nearest tree when the person is created, and change the old tests on purpose with a written reason. Then a window run with the new 50 m camera so you can watch it.</p>
+      <p><b>Progress (build ec83288, later builds 0191a5b):</b> the group of 5 passed on all 3 worlds (zero people blocking the tree). A group of 10 in a grove passed on all 3 worlds. A group of 20 FAILED on all 3 (blocked 18, 13, 3 person-ticks; line is 0). <b>Lessons learned:</b> a fix for one size can break another (a seed-11 round-1 regression showed up after a later change); in a packed crowd of 20 the ring around the trees has no free cell on the way out, and moves apply in id order, so a finished person can be stuck behind a lower-id neighbor. <b>Group of 20 with twice the tree cells (declared first, old failures stay):</b> blocked person-ticks 4, 0 and 5 on the three worlds (line 0), still FAIL; groups of 5 and 10 pass on all worlds. <b>Lessons learned:</b> the 20 people finish within about 4 minutes of each other and stand in each other's way. Some blocked people had free cells next to them and still stayed, so our own "do not go there" rules for leaving may be refusing the only free cell. <b>Proposed fix:</b> any free cell off the tree beats standing still; if a free cell is only reachable behind a person who is leaving this very minute, follow them out. We still do not drop "boxed-in" people from the count. After it works, all rounds are re-run on the one final build.</p>
+      <p><b>Group of 20, next try (build 4eec101):</b> groups of 5 and 10 pass on all 3 worlds again; 20 still fails on 2 of 3 worlds (3 and 5 blocked person-ticks; one world passes with 0). Letting the exit rules bend (any free off-tree cell beats standing still) changed nothing. <b>Lesson learned:</b> the real cause is searchers crowding a person on all four sides, so the finished person cannot move. <b>Proposed fix:</b> a searcher who finds no free tree cell waits two cells back instead of packing in, then all nine runs again.</p>
+      <p><b>"Wait two cells back" for searchers made it worse and was undone:</b> group of 20 went to 10, 1 and 2 blocked person-ticks (before: 3, 0, 5) and the group of 10 slipped from 0 to 3. <b>Lessons learned:</b> making searchers wait or avoid cells slows everyone down; and our earlier look at who stands around a stuck person was taken at the wrong minute (the minute the line ignores), so we do not yet know what the counted minutes look like. <b>What the exact counted minutes show (8 cases):</b> every stuck minute is one single minute right after finishing. Nobody is boxed in; all the people around moved on within that minute. Half the time two people wanted the same cell at the same instant and the lower number won; the other half the finisher saw a neighbor who was already leaving and waited. <b>Proposed fix:</b> finishers may plan through a cell a lower-numbered neighbor is about to leave, and prefer exits nobody else is standing next to (a preference, never a ban). If a one-minute stall is all that is left, whether it counts is your call, so it will be put to you with the numbers instead of being decided quietly.</p>
+      <p><b>Your idea, queued as the next fix:</b> a blocked person swaps places with the finished person next to them who is closest to the tree or stockpile. It is built right after the current fix is tested; the swap happens in one step so two people never share a cell, and the finished person lands further from the tree, so they give way too.</p>
+      <p><b>Your second idea, also queued:</b> a finished person who is stuck picks where to go next and swaps places with the person beside them in that direction. Both swaps are built one at a time, each tested on its own, each followed by all nine runs.</p>
+      <p><b>Window tests, 20 people (FAIL, 2 of 9):</b> the first windowed nine on the merged fix: 5 and 10 people pass on all 3 maps; 20 people pass on 1 map and each of the other 2 still has exactly one person stuck for one minute. Same as the hidden runs, so the window is not the cause.</p>
+      <p><b>Lesson:</b> both stuck people lost a same-minute race to someone with a lower number who moved first. One of them even gambled on walking through that person's cell and was refused. <b>Proposed fix:</b> swap places with the person in the way (your second idea) instead of gambling; built first, then your first idea (needs a new "I am done" flag the supervisor can see).</p>
+      <p><b>Swap places, first window tests (FAIL):</b> 20 people: 3 / 0 / 1 stuck on the 3 maps. Lesson: the swap sometimes dropped a person onto a cell right next to the tree, and the spread-out step then walked a swapped person back there. Fix: swap only onto cells away from the tree; spread-out never targets those cells. Rerun: 1 / 0 / 2 (FAIL).</p>
+      <p><b>Lesson 2:</b> a swap partner can be a person who already finished, and that person got pushed back next to the tree; a lower-number person also still won a plain one-cell race twice. <b>Next:</b> your first idea is being built (blocked seeker swaps with a finished person; needs the new "I am done" flag), then another window nine.</p>
+      <p><b>Both swap ideas in, window tests (FAIL, 20 people 1 / 0 / 1):</b> 5 and 10 people pass on all 3 maps. Lesson: a finished person swapped away from the tree, then the spread-out step walked them straight back across a tree-side cell. The goal was away from the tree, but the first step of the path was not. <b>Fix:</b> the walk away now picks a path that avoids tree-side cells first. Next: another window nine.</p>
+      <p><b>PASS: crowds of 5, 10 and 20 people (window tests, all 9 runs):</b> on all 3 maps, in a real window, nobody who had finished stayed standing at the tree while others still needed to gather there. The same code passed every run.</p>
+      <p><b>What fixed it, in order:</b> finished people leave the tree and walk out of the grove; a boxed-in person may cross a cell a lower-number person is leaving; the two swap ideas (a blocked finished person swaps with whoever is in the way; a walker swaps with a finished person at the tree, which needs a new "I am done" flag); swaps only land away from the tree; the walk away now avoids tree-side cells; seekers skip a pile someone stands on.</p>
+      <p><b>Plain facts:</b> your first swap idea was built wider than you wrote (any walker next to a finished person, first match, not only a blocked person and not the one closest to the tree). The first person's torch time on the final nine was 16 / 16 / 16 sim-minutes for 5 people, 7 / 8 / 4 for 10, 8 / 8 / 4 for 20 (first person only, not the whole group, so round 1 is over the 15-minute target, which is a reported target, not a pass line). One supervisor test failed once under load and passed alone (card KB-391).</p>
+      <p><b>Test next:</b> the real game with animals present (the tests had none), spare ingredients to share (KB-390), the running line (KB-381), the flaky test (KB-391).</p>
+      <p><b>Test method change from you:</b> from now on each finished change is merged right away and tested in a real window (hosted mode, camera on the group), one run at a time, instead of hidden runs. The tests still use their own test world, so your real game data stays untouched and stopped.</p>
+      <p><b>Lessons learned:</b> (1) finished people were tired, not sleepy, so they stood still on the tree; fixed, which cut blocked ticks on seed 6 from 8 to 5. (2) the "blocked" count includes the tick when someone crafts, which cannot be avoided as measured, so we must either make people step off first or declare a corrected count (the old FAIL stays on record). (3) late arrivers queue 2 to 3 minutes at a tree with 8 free cells.</p>
+      <p><b>Proposed fixes, one at a time:</b> step off the tree cell before crafting; queued people pick the nearest free tree cell; create real spare items to share. For 10 and 20 people the test must use a grove of several trees, not one tree. Rounds 2 (10 people) and 3 (20 people) wait until round 1 passes on all 3 worlds.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="pic">🏘️</div>
+    <div>
+      <h2>Fresh game: 40 small villages <span class="badge done">done</span></h2>
+      <p>People now start in 40 little groups of 2 to 5 on temperate land all over the map (140 humans in the check, every one on temperate land, groups at least 53 cells apart). The old game data was deleted (no backup) and a new game started from seed 6 with all the fixes. Counted in the new live game: 40 groups, 140 humans in groups of 2 to 5 (plus 5 earlier top-up humans = 145 human files), tick advancing, 421 creatures alive at the first check.</p>
+      <p><b>Not measured:</b> the live game with animals, peak memory and CPU of the ~190 processes, and whether people really finish a torch in the new world.</p>
+    </div>
+  </div>
+  <div class="card need" id="giveway">
+    <div class="pic">🤝</div>
+    <div>
+      <h2>Give way at the tree <span class="badge ok">fixed later (swap fix, KB-388)</span></h2>
+      <p>In a small made-up test, finished people leaving tree cells went from 18 of 30 cases to 0, and 9 dropped items got picked up. <b>But in the real 5-person torch test, nobody dropped or picked up anything (0 and 0), and the result matched the old code exactly.</b> The made-up test was too kind: it gave people spare sticks to drop; real people have empty bags after making a torch.</p>
+      <p><b>Lessons learned:</b> a feature that works in a small test can stay unused in the real one. Finished people were tired but not sleepy enough to sleep, so they just stood on the tree cells.</p>
+      <p><b>Proposed fix:</b> make tired finished people walk away (done, in testing); find a real source of spare items (a crowded person gathers one extra set, or hands it off when the torch is made) and let them drop it.</p>
+    </div>
+  </div>
+  <div class="card need" id="ping">
+    <div class="pic">📣</div>
+    <div>
+      <h2>Next steps to: People tell each other where resources are <span class="badge ok">KB-387 done</span></h2>
+      <p>A person who has or finds things shouts "here are 3 sticks and 2 stones". Anyone who needs those walks to the nearest shout if it is closer than finding them alone, or if the thing is rare where they stand.</p>
+      <p>Steps: (1) design: message words, how far a shout carries, same result every run with the same seed; (2) build it on top of give way and dropping items (KB-386); (3) test with the group of 5 at one tree: do seekers finish faster than without shouting?</p>
+    </div>
+  </div>
+  <footer>Also: one helper once copied a file into <code>/tmp/x</code>, which belonged to another session, then deleted it. A file with the same name there could have been overwritten.</footer>
+</main>
+</body>
+</html>
