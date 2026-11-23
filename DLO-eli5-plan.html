@@ -7,10 +7,10 @@
   --bg:#141a17; --fg:#e6ece8; --muted:#9fb0a6; --panel:#1d2521; --line:#2f3a34; --accent:#5fc193; color-scheme:dark;
   --t-dlo:#e9a23b; --t-world:#4f9d5d; --t-render:#5b7fd1; --t-tooling:#9a6fc4; --t-test:#d0607a; --t-blockchain:#6b6f76;
   --done:#2f7d5b; --wip:#e0a106; --todo:#9aa6a0; --blocked:#c0392b;
-  --tip-bg:rgba(40,44,48,.92); --tip-fg:#f4f6f5;
+  --todo-fg:#ffffff; --tip-bg:rgba(40,44,48,.92); --tip-fg:#f4f6f5;
   --display:"Fredoka", "Trebuchet MS", system-ui, sans-serif; --body:"Nunito", system-ui, sans-serif;
 }
-:root[data-theme="light"] { --bg:#f3f6f1; --fg:#1f2a24; --muted:#5d6b62; --panel:#ffffff; --line:#d6dfd5; --accent:#2f7d5b; color-scheme:light; }
+:root[data-theme="light"] { --bg:#f3f6f1; --fg:#1f2a24; --muted:#5d6b62; --panel:#ffffff; --line:#d6dfd5; --accent:#2f7d5b; --todo-fg:#141a17; color-scheme:light; }
 body { background:var(--bg); color:var(--fg); font:16px/1.55 var(--body); }
 .wrap { max-width:960px; margin:0 auto; padding-block:28px 60px; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); display:grid; gap:34px; }
 h1,h2 { font-family:var(--display); text-wrap:balance; margin:0; }
@@ -34,11 +34,13 @@ h1 { font-size:clamp(2rem,6vw,3.2rem); } h1 a.pglink { color:inherit; text-decor
 .chip:focus-visible { outline:3px solid var(--fg); outline-offset:2px; }
 .chip.sel { outline:3px solid var(--fg); outline-offset:2px; }
 .s-done { border-color:var(--done); } .s-wip { border-color:var(--wip); border-style:dashed; }
-.s-todo { border-color:var(--todo); opacity:.72; } .s-blocked { border-color:var(--blocked); }
+.s-todo { border-color:var(--todo); border-style:dotted; }
+/* todo: no opacity (would fade text); fill = 45% topic over panel, text color per theme keeps >= 4.5:1 */
+@supports (background:color-mix(in srgb, red 50%, blue)) { .chip.s-todo { background:color-mix(in srgb, var(--chip-fill) 45%, var(--panel)); color:var(--todo-fg); } } .s-blocked { border-color:var(--blocked); }
 .s-done::after { content:"✓"; position:absolute; top:-9px; right:-9px; background:var(--done); color:#fff; border-radius:50%; width:20px; height:20px; font-size:.75rem; display:grid; place-items:center; }
 .s-wip::after { content:"…"; position:absolute; top:-9px; right:-9px; background:var(--wip); color:#1f2a24; border-radius:50%; width:20px; height:20px; font-size:.8rem; display:grid; place-items:center; }
-.t-dlo { background:var(--t-dlo); } .t-world { background:var(--t-world); } .t-render { background:var(--t-render); }
-.t-tooling { background:var(--t-tooling); } .t-test { background:var(--t-test); } .t-blockchain { background:var(--t-blockchain); color:#fff; }
+.t-dlo { background:var(--t-dlo); --chip-fill:var(--t-dlo); } .t-world { background:var(--t-world); --chip-fill:var(--t-world); } .t-render { background:var(--t-render); --chip-fill:var(--t-render); }
+.t-tooling { background:var(--t-tooling); --chip-fill:var(--t-tooling); } .t-test { background:var(--t-test); --chip-fill:var(--t-test); } .t-blockchain { background:var(--t-blockchain); --chip-fill:var(--t-blockchain); color:#fff; }
 .legend { display:flex; flex-wrap:wrap; gap:10px 18px; font-size:.9rem; }
 .lg { display:inline-flex; align-items:center; gap:6px; } .lg small { color:var(--muted); }
 .sw { width:16px; height:16px; border-radius:4px; display:inline-block; }
@@ -59,7 +61,7 @@ h1 { font-size:clamp(2rem,6vw,3.2rem); } h1 a.pglink { color:inherit; text-decor
 <div class="wrap">
   <header>
     <h1><a class="pglink" href="https://mchzimm.github.io/dlo/">DLO 🐀🐂🐅</a></h1>
-    <p class="upd" id="upd">Updated 2026-11-23 06:52 PST · 2026-11-23 14:52 UTC</p>
+    <p class="upd" id="upd">Updated 2026-11-23 07:14 PST · 2026-11-23 15:14 UTC</p>
     <p class="sub">We are making tiny pretend animals that live inside the computer. They get hungry, thirsty, hot and cold, and they try to stay alive.</p>
   </header>
 
@@ -333,7 +335,7 @@ h1 { font-size:clamp(2rem,6vw,3.2rem); } h1 a.pglink { color:inherit; text-decor
     <div class="legend" style="margin-top:8px">
       <span class="lg"><i class="swb" style="border-color:var(--done)"></i>✓ done</span>
       <span class="lg"><i class="swb" style="border-color:var(--wip);border-style:dashed"></i>… being built</span>
-      <span class="lg"><i class="swb" style="border-color:var(--todo)"></i>to do</span>
+      <span class="lg"><i class="swb" style="border-color:var(--todo);border-style:dotted"></i>to do</span>
     </div>
     <div class="strip" style="margin-top:14px"><button class="chip t-dlo s-done" id="chip-KB-1" data-id="KB-1" aria-label="KB-1 v0 headless skeleton"><span class="ic">🐾</span><span class="cid">1</span></button>
 <button class="chip t-render s-done" id="chip-KB-2" data-id="KB-2" aria-label="KB-2 GUI viewer window with emoji atlas, zoom =/-, arrow…"><span class="ic">🖼️</span><span class="cid">2</span></button>
